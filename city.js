@@ -275,3 +275,18 @@ document.querySelector("#city1").addEventListener("change", function (e) {
     }
   });
 });
+
+document.querySelector("#city2").addEventListener("change", function (e) {
+  let selected_city1 = document.querySelector("#city1");
+  for (let i = 0; i < cities.length; i++) {
+    if (
+      cities[i][0] ==
+        selected_city1.options[selected_city1.selectedIndex].value &&
+      cities[i][1] == e.target.value
+    ) {
+      console.log(cities[i][2], cities[i][3]);
+      weather(cities[i][2], cities[i][3]);
+      break;
+    }
+  }
+});
