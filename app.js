@@ -1,4 +1,25 @@
-//app.js 에는 api 받아온걸 뿌려주는 역할을 해야겠지?
 //https://www.data.go.kr/iim/api/selectAPIAcountView.do 여기서 데이터를 받아오자!
-//vs git test
-//test complete
+
+fetch(
+  `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${apikey}&pageNo=1&numOfRows=229&dataType=JSON&base_date=20230604&base_time=0500&nx=55&ny=127`
+)
+  .then((res) => res.json())
+  .then(function (data) {
+    let weather_infos = data.response.body.items;
+    let TMP = [];
+
+    weather_infos.item.forEach(function (info) {
+      if (info.category == "TMP") {
+        TMP.push({
+          fcstDate: info.fcstDate,
+          fcstTime: info.fcstTime,
+          TMP: info.fcstValue,
+        });
+      }
+    });
+
+    console.log(TMP);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
