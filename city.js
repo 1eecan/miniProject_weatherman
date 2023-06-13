@@ -257,6 +257,19 @@ cities.forEach(function (city) {
     city1.push(city[0]);
   }
 });
+//localstorage 조회해보고 도시가 저장되어 있으면 바로 로딩
+if (window.localStorage.length !== 0) {
+  let key = window.localStorage.key(0);
+  let stored = window.localStorage.getItem(key);
+  let city1 = key.split(",")[0];
+  let city2 = key.split(",")[1];
+  let row = stored.split(",")[0];
+  let col = stored.split(",")[1];
+  console.log(row, col);
+  document.querySelector("#city1").innerHTML = `<option>${city1}</option>`;
+  document.querySelector("#city2").innerHTML = `<option>${city2}</option>`;
+  weather(row, col);
+}
 
 city1.forEach(function (city) {
   document
@@ -275,7 +288,7 @@ document.querySelector("#city1").addEventListener("change", function (e) {
     }
   });
 });
-
+let row_col_storage = "";
 document.querySelector("#city2").addEventListener("change", function (e) {
   let selected_city1 = document.querySelector("#city1");
   for (let i = 0; i < cities.length; i++) {
@@ -285,6 +298,7 @@ document.querySelector("#city2").addEventListener("change", function (e) {
       cities[i][1] == e.target.value
     ) {
       console.log(cities[i][2], cities[i][3]);
+      row_col_storage = `${cities[i][2]},${cities[i][3]}`;
       weather(cities[i][2], cities[i][3]);
       break;
     }
