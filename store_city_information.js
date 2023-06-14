@@ -1,4 +1,4 @@
-document.querySelector("#store").addEventListener("click", function () {
+function store_city_information(row_col_storage) {
   let city1 =
     document.querySelector("#city1").options[
       document.querySelector("#city1").selectedIndex
@@ -13,4 +13,4 @@ document.querySelector("#store").addEventListener("click", function () {
     window.localStorage.clear();
   }
   window.localStorage.setItem(key, value);
-});
+}
