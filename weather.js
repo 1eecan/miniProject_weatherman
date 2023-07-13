@@ -1,4 +1,3 @@
-//https://www.data.go.kr/iim/api/selectAPIAcountView.do 여기서 데이터를 받아오자!
 function weather(nx, ny) {
   let today = new Date();
   let year = today.getFullYear();
@@ -58,13 +57,7 @@ function weather(nx, ny) {
           });
         }
       });
-
-      console.log("기온", TMP);
-      console.log("강수확률", POP);
-      console.log("강수형태", PTY);
-      console.log("1시간 강수량", PCP);
-      console.log("습도", REH);
-      console.log("하늘상태", SKY);
+      return { tmp: TMP, pop: POP, pty: PTY, pcp: PCP, reh: REH, sky: SKY };
     })
     .catch(function (error) {
       console.log(error);
