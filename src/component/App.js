@@ -1,4 +1,4 @@
-import { request } from "./api.js";
+import { request } from "../core/api.js";
 import Header from "./Header.js";
 
 export default function App({ $target }) {
@@ -15,7 +15,7 @@ export default function App({ $target }) {
   new Header({ $target });
 
   this.fetchWeather = async (nx = 60, ny = 127) => {
-    const nextState = await request(nx, ny);
+    const nextState = (await request(nx, ny)).response.body.items.item;
     this.setState(nextState);
   };
 
