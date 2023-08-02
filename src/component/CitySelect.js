@@ -14,7 +14,7 @@ export default function CitySelect({ $target, initialState }) {
     console.log(this.state);
     const { city, town } = this.state.city;
     $citySelect.innerHTML = `
-            <h2>지금 ${city} ${town}의 날씨는...</h2>
+            <h2>${city} ${town}의 날씨는...</h2>
         `;
   };
 

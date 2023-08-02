@@ -12,6 +12,7 @@ export default function App({ $target }) {
   this.setState = (nextState) => {
     this.state = nextState;
     citySelect.setState(this.state);
+    temperature.setState(this.state);
   };
 
   new Header({ $target: $target });
