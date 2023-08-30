@@ -1,7 +1,7 @@
 import { locationInformation } from "../core/locationInformation.js";
 import { cityInformation } from "../core/cityInformation.js";
 
-export default function CitySelect({ $target, initialState }) {
+export default function CitySelect({ $target, initialState, onSelect }) {
   const $citySelect = document.createElement("div");
 
   $target.appendChild($citySelect);
@@ -14,7 +14,7 @@ export default function CitySelect({ $target, initialState }) {
   };
 
   this.render = () => {
-    console.log(this.state);
+    // console.log(this.state);
     const { city, town } = this.state.city;
     $citySelect.innerHTML = `
             <select class="selectCity">
@@ -55,7 +55,13 @@ export default function CitySelect({ $target, initialState }) {
           }),
       ]}
       `;
-      console.log(selectedCity.options[selectedCity.selectedIndex].text);
+      // console.log(selectedCity.options[selectedCity.selectedIndex].text);
+    });
+    selectedTown.addEventListener("change", (e) => {
+      onSelect({
+        city: selectedCity.options[selectedCity.selectedIndex].text,
+        town: e.target.value,
+      });
     });
   };
 
