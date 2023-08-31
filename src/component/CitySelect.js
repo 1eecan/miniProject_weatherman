@@ -18,21 +18,16 @@ export default function CitySelect({ $target, initialState, onSelect }) {
     const { city, town } = this.state.location;
     $citySelect.innerHTML = `
             <select class="selectCity">
-            ${cityInformation.map((city, index) =>
-              index === 0
-                ? `<option selected>${city}</option>`
-                : `<option>${city}</option>`
-            )}
+            <option selected hidden>시/도</option>
+            ${cityInformation.map((city, index) => `<option>${city}</option>`)}
             </select>
+            
             <select class="selectTown">
+            <option selected hidden>시/군/구</option>
             ${[
               locationInformation
                 .filter((item) => item[0] === city)
-                .map((town, index) => {
-                  return index === 0
-                    ? `<option selected>${town[1]}</option>`
-                    : `<option>${town[1]}</option>`;
-                }),
+                .map((town, index) => `<option>${town[1]}</option>`),
             ]}
             </select>
             <h2>${city} ${town}의 날씨는...</h2>
@@ -42,6 +37,7 @@ export default function CitySelect({ $target, initialState, onSelect }) {
     selectedCity.addEventListener("change", () => {
       selectedTown.length = 0;
       selectedTown.innerHTML = `
+      <option selected hidden>시/군/구</option>
       ${[
         locationInformation
           .filter(
@@ -49,9 +45,7 @@ export default function CitySelect({ $target, initialState, onSelect }) {
               item[0] === selectedCity.options[selectedCity.selectedIndex].text
           )
           .map((town, index) => {
-            return index === 0
-              ? `<option selected>${town[1]}</option>`
-              : `<option>${town[1]}</option>`;
+            return `<option>${town[1]}</option>`;
           }),
       ]}
       `;
