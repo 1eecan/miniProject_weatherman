@@ -6,7 +6,7 @@ import { locationInformation } from "../core/locationInformation.js";
 
 export default function App({ $target }) {
   this.state = {
-    city: { city: "서울특별시", town: "종로구" },
+    location: { city: "서울특별시", town: "종로구" },
     weather: [],
   };
 
@@ -48,13 +48,13 @@ export default function App({ $target }) {
   });
 
   this.fetchWeather = async (
-    locationInformation = this.state.city,
+    locationInformation = this.state.location,
     nx = 60,
     ny = 127
   ) => {
     console.log(locationInformation);
     const nextState = {
-      city: locationInformation,
+      location: locationInformation,
       weather: (await request(nx, ny)).response.body.items.item,
     };
     this.setState(nextState);
