@@ -1,6 +1,7 @@
 import { request } from "../core/api.js";
 import CitySelect from "./CitySelect.js";
 import Header from "./Header.js";
+import Caution from "./Caution.js";
 import Temperature from "./Temprature.js";
 import { locationInformation } from "../core/locationInformation.js";
 
@@ -15,6 +16,8 @@ export default function App({ $target }) {
     citySelect.setState(this.state);
     temperature.setState(this.state);
   };
+
+  new Caution({ $target: $target });
 
   new Header({ $target: $target });
 
