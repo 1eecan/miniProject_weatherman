@@ -17,7 +17,7 @@ const dateString = dateIsUpdated
   ? year + month + day
   : yesterdayYear + yesterdayMonth + yesterdayDay;
 
-const API_END_POINT = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${apikey}&pageNo=1&numOfRows=229&dataType=JSON&base_date=${dateString}&base_time=2300`;
+const API_END_POINT = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${apikey}&pageNo=1&numOfRows=229&dataType=JSON&base_date=${dateString}&base_time=0500`;
 
 export const request = async (nx, ny) => {
   try {

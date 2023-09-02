@@ -4,10 +4,18 @@ import Header from "./Header.js";
 import Caution from "./Caution.js";
 import Temperature from "./Temprature.js";
 import { locationInformation } from "../core/locationInformation.js";
+import { getItem, setItem } from "../core/storage.js";
 
 export default function App({ $target }) {
+  const initialLocation = getItem("location", {
+    city: "서울특별시",
+    town: "종로구",
+  });
+
+  console.log(initialLocation);
+
   this.state = {
-    location: { city: "서울특별시", town: "종로구" },
+    location: initialLocation,
     weather: [],
   };
 
@@ -55,7 +63,6 @@ export default function App({ $target }) {
     nx = 60,
     ny = 127
   ) => {
-    console.log(locationInformation);
     const nextState = {
       location: locationInformation,
       weather: (await request(nx, ny)).response.body.items.item,

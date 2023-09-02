@@ -6,6 +6,8 @@ export default function CitySelect({ $target, initialState, onSelect }) {
 
   $target.appendChild($citySelect);
 
+  console.log(initialState);
+
   this.state = initialState;
 
   this.setState = (nextState) => {
@@ -14,7 +16,6 @@ export default function CitySelect({ $target, initialState, onSelect }) {
   };
 
   this.render = () => {
-    console.log(this.state);
     const { city, town } = this.state.location;
     $citySelect.innerHTML = `
             <select class="selectCity">
