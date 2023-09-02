@@ -1,5 +1,5 @@
 import { request } from "../core/api.js";
-import CitySelect from "./CitySelect.js";
+import LocationSelect from "./LocationSelect.js";
 import Header from "./Header.js";
 import Caution from "./Caution.js";
 import Temperature from "./Temprature.js";
@@ -12,8 +12,6 @@ export default function App({ $target }) {
     town: "종로구",
   });
 
-  console.log(initialLocation);
-
   this.state = {
     location: initialLocation,
     weather: [],
@@ -21,7 +19,7 @@ export default function App({ $target }) {
 
   this.setState = (nextState) => {
     this.state = nextState;
-    citySelect.setState(this.state);
+    locationSelect.setState(this.state);
     temperature.setState(this.state);
   };
 
@@ -29,7 +27,7 @@ export default function App({ $target }) {
 
   new Header({ $target: $target });
 
-  const citySelect = new CitySelect({
+  const locationSelect = new LocationSelect({
     $target: $target,
     initialState: this.state,
     onSelect: async ({ city, town }) => {
