@@ -10,8 +10,6 @@ export default function LocationSelect({ $target, initialState, onSelect }) {
   $target.appendChild($selectCity);
   $target.appendChild($selectTown);
 
-  console.log(initialState);
-
   this.state = initialState;
 
   this.setState = (nextState) => {

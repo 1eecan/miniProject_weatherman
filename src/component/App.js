@@ -2,7 +2,7 @@ import { request } from "../core/api.js";
 import LocationSelect from "./LocationSelect.js";
 import Header from "./Header.js";
 import Caution from "./Caution.js";
-import Temperature from "./Temprature.js";
+import HighestTemperature from "./HighestTemprature.js";
 import { locationInformation } from "../core/locationInformation.js";
 import { getItem, setItem } from "../core/storage.js";
 
@@ -20,7 +20,7 @@ export default function App({ $target }) {
   this.setState = (nextState) => {
     this.state = nextState;
     locationSelect.setState(this.state);
-    temperature.setState(this.state);
+    highestTemperature.setState(this.state);
   };
 
   new Caution({ $target: $target });
@@ -51,7 +51,7 @@ export default function App({ $target }) {
     },
   });
 
-  const temperature = new Temperature({
+  const highestTemperature = new HighestTemperature({
     $target: $target,
     initialState: this.state,
   });

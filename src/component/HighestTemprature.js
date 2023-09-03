@@ -1,4 +1,4 @@
-export default function Temperature({ $target, initialState }) {
+export default function HighestTemperature({ $target, initialState }) {
   const $temprature = document.createElement("div");
 
   $target.appendChild($temprature);
@@ -11,6 +11,7 @@ export default function Temperature({ $target, initialState }) {
   };
 
   this.render = () => {
+    console.log(this.state);
     if (this.state.weather.length === 0) return;
     const { weather } = this.state;
     const highestTemprature = weather.filter(
