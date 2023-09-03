@@ -1,7 +1,7 @@
 export default function HighestTemperature({ $target, initialState }) {
-  const $temprature = document.createElement("div");
+  const $highestTemprature = document.createElement("div");
 
-  $target.appendChild($temprature);
+  $target.appendChild($highestTemprature);
 
   this.state = initialState;
 
@@ -18,7 +18,7 @@ export default function HighestTemperature({ $target, initialState }) {
       (item) => item.category === "TMX"
     )[0];
 
-    $temprature.innerHTML = `
+    $highestTemprature.innerHTML = `
       <h2>${highestTemprature.fcstTime}시에 ${highestTemprature.fcstValue}도 까지 올라갑니다...!</h2>
     `;
   };
