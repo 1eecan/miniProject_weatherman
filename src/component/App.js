@@ -6,6 +6,7 @@ import HighestTemperature from "./HighestTemprature.js";
 import LowestTemperature from "./LowestTemprature.js";
 import { locationInformation } from "../core/locationInformation.js";
 import { getItem, setItem } from "../core/storage.js";
+import Loading from "./Loading.js";
 
 export default function App({ $target }) {
   const initialLocation = getItem("location", {
@@ -16,6 +17,7 @@ export default function App({ $target }) {
   this.state = {
     location: initialLocation,
     weather: [],
+    isLoading: false,
   };
 
   this.setState = (nextState) => {
@@ -26,6 +28,8 @@ export default function App({ $target }) {
   };
 
   new Caution({ $target: $target });
+
+  const loading = new Loading({ $target: $target, initialState: this.state });
 
   new Header({ $target: $target });
 
@@ -68,11 +72,13 @@ export default function App({ $target }) {
     nx = 60,
     ny = 127
   ) => {
+    loading.setState({ ...this.state, isLoading: true });
     const nextState = {
       location: locationInformation,
       weather: (await request(nx, ny)).response.body.items.item,
     };
     this.setState(nextState);
+    loading.setState({ ...this.state, isLoading: false });
   };
 
   this.fetchWeather();
