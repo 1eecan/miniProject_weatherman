@@ -4,6 +4,7 @@ import Header from "./Header.js";
 import Caution from "./Caution.js";
 import HighestTemperature from "./HighestTemprature.js";
 import LowestTemperature from "./LowestTemprature.js";
+import Temprature from "./Temprature.js";
 import { locationInformation } from "../core/locationInformation.js";
 import { getItem, setItem } from "../core/storage.js";
 import Loading from "./Loading.js";
@@ -25,6 +26,7 @@ export default function App({ $target }) {
     locationSelect.setState(this.state);
     highestTemperature.setState(this.state);
     lowestTemperature.setState(this.state);
+    temprature.setState(this.state);
   };
 
   new Caution({ $target: $target });
@@ -63,6 +65,11 @@ export default function App({ $target }) {
   });
 
   const lowestTemperature = new LowestTemperature({
+    $target: $target,
+    initialState: this.state,
+  });
+
+  const temprature = new Temprature({
     $target: $target,
     initialState: this.state,
   });
