@@ -51,6 +51,8 @@ export default function App({ $target }) {
         ny: selectedLocation[3],
       };
 
+      setItem("location", selectedLocationName);
+
       await this.fetchWeather(
         selectedLocationName,
         selectedLocationCoord.nx,

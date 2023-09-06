@@ -11,11 +11,9 @@ export default function ({ $target, initialState }) {
   };
 
   this.render = () => {
-    console.log(this.state);
     if (this.state.weather.length === 0) return;
     const { weather } = this.state;
     const temprature = weather.filter((item) => item.category === "TMP");
-    console.log(temprature);
     $temprature.innerHTML = `
             <div>${temprature
               .map(

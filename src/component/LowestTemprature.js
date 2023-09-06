@@ -11,7 +11,6 @@ export default function LowestTemperature({ $target, initialState }) {
   };
 
   this.render = () => {
-    console.log(this.state);
     if (this.state.weather.length === 0) return;
     const { weather } = this.state;
     const lowestTemprature = weather.filter(
