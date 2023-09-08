@@ -8,6 +8,7 @@ import Temprature from "./Temprature.js";
 import { locationInformation } from "../core/locationInformation.js";
 import { getItem, setItem } from "../core/storage.js";
 import Loading from "./Loading.js";
+import filteredWeatherInfo from "../core/filteredWeatherInfo.js";
 
 export default function App({ $target }) {
   const initialLocation = getItem("location", {
@@ -27,6 +28,7 @@ export default function App({ $target }) {
     highestTemperature.setState(this.state);
     lowestTemperature.setState(this.state);
     temprature.setState(this.state);
+    filteredWeatherInfo({ weather: this.state.weather });
   };
 
   new Caution({ $target: $target });
