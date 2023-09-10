@@ -11,7 +11,7 @@ const yesterdayMonth = ("0" + (yesterday.getMonth() + 1)).slice(-2);
 const yesterdayDay = ("0" + yesterday.getDate()).slice(-2);
 
 const dateIsUpdated =
-  today.getHours() > 0 && today.getHours() < 2 ? false : true;
+  today.getHours() >= 0 && today.getHours() < 2 ? false : true;
 
 const dateString = dateIsUpdated
   ? year + month + day
@@ -21,6 +21,7 @@ const API_END_POINT = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0
 
 export const request = async (nx, ny) => {
   try {
+    console.log(`${API_END_POINT}&nx=${nx}&ny=${ny}`);
     const res = await fetch(`${API_END_POINT}&nx=${nx}&ny=${ny}`);
 
     if (!res.ok) {
