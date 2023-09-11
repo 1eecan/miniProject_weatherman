@@ -1,5 +1,4 @@
 export default function filteredWeatherInfo({ weather }) {
-  console.log(weather);
   const filteredData = [];
   let tempTime = weather[0].fcstTime;
   let tempIndex = 0;
