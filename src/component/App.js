@@ -9,12 +9,15 @@ import { locationInformation } from "../core/locationInformation.js";
 import { getItem, setItem } from "../core/storage.js";
 import Loading from "./Loading.js";
 import filteredWeatherInfo from "../core/filteredWeatherInfo.js";
+import gpt from "../core/gpt.js";
 
 export default function App({ $target }) {
   const initialLocation = getItem("location", {
     city: "서울특별시",
     town: "종로구",
   });
+
+  gpt();
 
   this.state = {
     location: initialLocation,
