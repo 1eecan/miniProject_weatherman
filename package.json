@@ -12,7 +12,9 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
+    "bard-ai": "^2.0.3",
     "dotenv": "^16.3.1",
+    "node-fetch": "^3.3.2",
     "openai": "^4.6.0"
   }
 }
